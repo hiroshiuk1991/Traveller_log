@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_19_191727) do
+ActiveRecord::Schema.define(version: 2020_01_19_192208) do
 
   create_table "destinations", force: :cascade do |t|
     t.integer "diary_entry_id", null: false
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2020_01_19_191727) do
     t.integer "diary_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "date"
+    t.text "content"
     t.index ["diary_id"], name: "index_diary_entries_on_diary_id"
   end
 
