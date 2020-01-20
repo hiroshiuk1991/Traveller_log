@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
     before_action :set_current_user
 
     def issue_token(payload)
-        JWT.encode(payloat, ENV['RAILS_SECRET'])
+        JWT.encode(payload, ENV['RAILS_SECRET'])
     end
 
     def decode_token(token)
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::API
 
         if token
             decode_token = decode_token(token)
-            @current_user = User.find(decoded_token['user_id'])
+            @current_user = User.find(decode_token['user_id'])
         else
             @current_user = nil 
         end
@@ -28,5 +28,5 @@ class ApplicationController < ActionController::API
     def logged_in?
         !!@current_user
     end
-        
+
 end
