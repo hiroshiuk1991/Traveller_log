@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_20_110213) do
+ActiveRecord::Schema.define(version: 2020_01_20_113859) do
 
   create_table "destinations", force: :cascade do |t|
     t.integer "diary_entry_id", null: false
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2020_01_20_110213) do
     t.integer "diary_entry_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "photo_url"
     t.index ["diary_entry_id"], name: "index_photos_on_diary_entry_id"
   end
 
