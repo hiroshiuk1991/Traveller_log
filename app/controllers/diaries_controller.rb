@@ -9,6 +9,11 @@ class DiariesController < ApplicationController
         end
     end 
 
+    def index
+        diaries = Diary.all 
+        render json: diaries
+    end
+
     private
 
     def diary_params
