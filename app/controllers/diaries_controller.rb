@@ -1,7 +1,10 @@
 class DiariesController < ApplicationController
 
+    before_action :authorized_action
+
     def create 
         diary = Diary.create(diary_params)
+        diary.update(user: @current_user )
         if diary.valid? 
             render json: diary
         else
@@ -17,6 +20,14 @@ class DiariesController < ApplicationController
     private
 
     def diary_params
-        params.require(:diary).permit(:user_id, :description)
+        params.require(:diary).permit( :description)
     end
+
+    def authorized_action
+        if !logged_in?
+            render json: {erros:'You must be a registered user.'}, status: :unauthorized 
+        end
+    end
+
+
 end
