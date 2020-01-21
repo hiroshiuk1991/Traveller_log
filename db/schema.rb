@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_16_144431) do
+ActiveRecord::Schema.define(version: 2020_01_20_113859) do
 
   create_table "destinations", force: :cascade do |t|
     t.integer "diary_entry_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "city"
+    t.string "country"
     t.index ["diary_entry_id"], name: "index_destinations_on_diary_entry_id"
   end
 
@@ -23,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_01_16_144431) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "description"
     t.index ["user_id"], name: "index_diaries_on_user_id"
   end
 
@@ -30,6 +33,8 @@ ActiveRecord::Schema.define(version: 2020_01_16_144431) do
     t.integer "diary_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "date"
+    t.text "content"
     t.index ["diary_id"], name: "index_diary_entries_on_diary_id"
   end
 
@@ -37,6 +42,7 @@ ActiveRecord::Schema.define(version: 2020_01_16_144431) do
     t.integer "diary_entry_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "photo_url"
     t.index ["diary_entry_id"], name: "index_photos_on_diary_entry_id"
   end
 
@@ -45,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_01_16_144431) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
   end
 
   add_foreign_key "destinations", "diary_entries"
